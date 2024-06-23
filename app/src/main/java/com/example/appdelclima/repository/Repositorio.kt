@@ -1,6 +1,7 @@
+
 package com.istea.appdelclima.repository
 
-import com.istea.appdelclima.repository.modelos.Ciudad
+import Ciudad
 import com.istea.appdelclima.repository.modelos.Clima2
 
 interface Repositorio {
