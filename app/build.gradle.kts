@@ -61,9 +61,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
-    implementation("io.ktor.ktor-client-android:2.3.11")
-    implementation("io.ktor.ktor-client-content-negotiation:2.3.11")
-    implementation("io.ktor.ktor-serialization-kotlinx-json:2.3.11")
+    implementation("io.ktor:ktor-client-android:2.3.11")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.11")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.11")
 
 
     androidTestImplementation(libs.androidx.junit)
