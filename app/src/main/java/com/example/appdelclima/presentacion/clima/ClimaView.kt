@@ -1,4 +1,3 @@
-package com.istea.appdelclima.presentacion.clima
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,15 +11,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import com.example.appdelclima.presentacion.clima.ClimaIntencion
 import com.example.appdelclima.ui.theme.AppDelClimaTheme
-//import com.istea.appdelclima.ui.theme.AppDelClimaTheme
+import com.istea.appdelclima.presentacion.clima.ClimaEstado
+
+
 @Composable
 fun ClimaView(
     modifier: Modifier = Modifier,
     state : ClimaEstado,
     onAction: (ClimaIntencion)->Unit
 ) {
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+        onAction(ClimaIntencion.actualizarClima)
+    }
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -35,62 +41,56 @@ fun ClimaView(
                 descripcion = state.descripcion,
                 st = state.st
             )
-            ClimaEstado.Vacio -> EmptyView()
+
+            ClimaEstado.Vacio -> LoadingView()
             ClimaEstado.Cargando -> EmptyView()
         }
+
         Spacer(modifier = Modifier.height(100.dp))
-        Button(onClick = { onAction(ClimaIntencion.BorrarTodo) }) {
-            Text(text = "Borrar todo")
-        }
-        Button(onClick = { onAction(ClimaIntencion.MostrarCaba) }) {
-            Text(text = "Mostrar Caba")
-        }
-        Button(onClick = { onAction(ClimaIntencion.MostrarCordoba) }) {
-            Text(text = "Mostrar Cordoba")
-        }
-        Button(onClick = { onAction(ClimaIntencion.MostrarError) }) {
-            Text(text = "Mostrar Error")
-        }
-    }
-}
+
+
+
 @Composable
 fun EmptyView(){
     Text(text = "No hay nada que mostrar")
 }
+
+@Composable
+fun LoadingView(){
+    Text(text = "Cargando")
+}
+
 @Composable
 fun ErrorView(mensaje: String){
     Text(text = mensaje)
 }
-
 @Composable
-
-    fun ClimaView(ciudad: String, temperatura: Double, descripcion: String, st:Double){
-        Column {
-            Text(text = ciudad, style = MaterialTheme.typography.titleMedium)
-            Text(text = "${temperatura}°", style = MaterialTheme.typography.titleLarge)
-            Text(text = descripcion, style = MaterialTheme.typography.bodyMedium)
-            Text(text = "sensacionTermica: ${st}°", style = MaterialTheme.typography.bodyMedium)
-        }
+fun ClimaView(ciudad: String, temperatura: Double, descripcion: String, st:Double){
+    Column {
+        Text(text = ciudad, style = MaterialTheme.typography.titleMedium)
+        Text(text = "${temperatura}°", style = MaterialTheme.typography.titleLarge)
+        Text(text = descripcion, style = MaterialTheme.typography.bodyMedium)
+        Text(text = "sensacionTermica: ${st}°", style = MaterialTheme.typography.bodyMedium)
     }
-    @Preview(showBackground = true)
-    @Composable
-    fun ClimaPreviewVacio() {
-        AppDelClimaTheme {
-            ClimaView(state = ClimaEstado.Vacio, onAction = {})
-        }
+}
+@Preview(showBackground = true)
+@Composable
+fun ClimaPreviewVacio() {
+    AppDelClimaTheme {
+        ClimaView(state = ClimaEstado.Vacio, onAction = {})
     }
-    @Preview(showBackground = true)
-    @Composable
-    fun ClimaPreviewError() {
-        AppDelClimaTheme {
-            ClimaView(state = ClimaEstado.Error("Se rompio todo"), onAction = {})
-        }
+}
+@Preview(showBackground = true)
+@Composable
+fun ClimaPreviewError() {
+    AppDelClimaTheme {
+        ClimaView(state = ClimaEstado.Error("Se rompio todo"), onAction = {})
     }
-    @Preview(showBackground = true)
-    @Composable
-    fun ClimaPreviewExitoso() {
-        AppDelClimaTheme {
-
-            ClimaView(state = ClimaEstado.Exitoso(ciudad = "Mendoza", temperatura = 0.0), onAction = {})
-        }
+}
+@Preview(showBackground = true)
+@Composable
+fun ClimaPreviewExitoso() {
+    AppDelClimaTheme {
+        ClimaView(state = ClimaEstado.Exitoso(ciudad = "Mendoza", temperatura = 0.0), onAction = {})
     }
+}

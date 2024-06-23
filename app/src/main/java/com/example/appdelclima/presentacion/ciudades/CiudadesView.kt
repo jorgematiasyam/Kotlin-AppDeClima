@@ -15,7 +15,6 @@ import com.example.appdelclima.presentacion.ciudades.CiudadesEstado
 import com.example.appdelclima.presentacion.ciudades.CiudadesIntencion
 import com.istea.appdelclima.repository.modelos.Ciudad
 
-
 @Composable
 fun CiudadesView (
     modifier: Modifier = Modifier,
@@ -36,7 +35,11 @@ fun CiudadesView (
         when(state) {
             CiudadesEstado.Cargando -> Text(text = "cargando")
             is CiudadesEstado.Error -> Text(text = state.mensaje)
-            is CiudadesEstado.Resultado -> ListaDeCiudades(state.ciudades, { onAction(CiudadesIntencion.Seleccionar(it))})
+            is CiudadesEstado.Resultado -> ListaDeCiudades(state.ciudades) {
+                onAction(
+                    CiudadesIntencion.Seleccionar(it)
+                )
+            }
             CiudadesEstado.Vacio -> Text(text = "No hay resultados")
         }
     }
@@ -44,10 +47,10 @@ fun CiudadesView (
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListaDeCiudades(ciudades: Array<Ciudad>, onSelect: (Int)->Unit) {
+fun ListaDeCiudades(ciudades: List<Ciudad>, onSelect: (Ciudad)->Unit) {
     LazyColumn {
         items(items = ciudades) {
-            Card(onClick = { onSelect(0) }) {
+            Card(onClick = { onSelect(it) }) {//TODO ese indice no debe ser 0 cambiar cuando tenga api
                 Text(text = it.name)
             }
         }
