@@ -14,9 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
+import com.example.appdelclima.presentacion.clima.actual.ClimaEstado
 import com.example.appdelclima.presentacion.clima.actual.ClimaIntencion
 import com.example.appdelclima.ui.theme.AppDelClimaTheme
-import com.example.appdelclima.presentacion.clima.actual.ClimaEstado
 
 
 
@@ -43,14 +43,12 @@ fun ClimaView(
                 descripcion = state.descripcion,
                 st = state.st
             )
-
             ClimaEstado.Vacio -> LoadingView()
             ClimaEstado.Cargando -> EmptyView()
         }
-
         Spacer(modifier = Modifier.height(100.dp))
-
-
+    }
+}
 
 @Composable
 fun EmptyView(){
@@ -66,6 +64,7 @@ fun LoadingView(){
 fun ErrorView(mensaje: String){
     Text(text = mensaje)
 }
+
 @Composable
 fun ClimaView(ciudad: String, temperatura: Double, descripcion: String, st:Double){
     Column {
@@ -75,6 +74,7 @@ fun ClimaView(ciudad: String, temperatura: Double, descripcion: String, st:Doubl
         Text(text = "sensacionTermica: ${st}°", style = MaterialTheme.typography.bodyMedium)
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun ClimaPreviewVacio() {
@@ -82,6 +82,7 @@ fun ClimaPreviewVacio() {
         ClimaView(state = ClimaEstado.Vacio, onAction = {})
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun ClimaPreviewError() {
@@ -89,6 +90,7 @@ fun ClimaPreviewError() {
         ClimaView(state = ClimaEstado.Error("Se rompio todo"), onAction = {})
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun ClimaPreviewExitoso() {

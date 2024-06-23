@@ -6,9 +6,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.istea.appdelclima.presentacion.ciudades.CiudadesPage
-import com.istea.appdelclima.presentacion.clima.ClimaPage
-import com.istea.appdelclima.router.Ruta
+import com.example.appdelclima.presentacion.ciudades.CiudadesPage
+import com.example.appdelclima.router.Ruta
+import com.istea.appdelclima.presentacion.clima.actual.ClimaPage
+
 
 @Composable
 fun MainPage() {
@@ -34,7 +35,7 @@ fun MainPage() {
             val lon = it.arguments?.getFloat("lon") ?: 0.0f
             val nombre = it.arguments?.getString("nombre") ?: ""
             ClimaPage(navHostController, lat = lat, lon = lon, nombre = nombre)
-
         }
     }
 }
+

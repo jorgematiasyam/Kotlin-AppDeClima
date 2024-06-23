@@ -17,7 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
-import com.istea.appdelclima.repository.modelos.ListForecast
+import com.example.appdelclima.presentacion.clima.pronostico.PronosticoEstado
+import com.example.appdelclima.repository.modelos.ListForecast
+
 
 
 @Composable

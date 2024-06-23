@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.appdelclima.presentacion.clima.pronostico.PronosticoEstado
 import com.example.appdelclima.router.Router
 import com.istea.appdelclima.repository.Repositorio
-import com.istea.appdelclima.router.Router
+
 import kotlinx.coroutines.launch
 
 class PronosticoViewModel(

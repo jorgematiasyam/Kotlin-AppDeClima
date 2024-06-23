@@ -1,8 +1,8 @@
+import com.example.appdelclima.repository.modelos.ForecastDTO
+import com.example.appdelclima.repository.modelos.ListForecast
 import com.istea.appdelclima.repository.Repositorio
 import com.istea.appdelclima.repository.modelos.Ciudad
 import com.istea.appdelclima.repository.modelos.Clima
-import com.istea.appdelclima.repository.modelos.ForecastDTO
-import com.istea.appdelclima.repository.modelos.ListForecast
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation

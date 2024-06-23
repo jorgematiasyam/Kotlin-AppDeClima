@@ -1,8 +1,9 @@
 package com.example.appdelclima.presentacion.clima.pronostico
 
 
+import com.example.appdelclima.repository.modelos.ListForecast
 import com.istea.appdelclima.repository.modelos.Clima
-import com.istea.appdelclima.repository.modelos.ListForecast
+
 
 sealed class PronosticoEstado {
     data class Exitoso (
