@@ -17,7 +17,6 @@ class RepositorioMock  : Repositorio {
             country = "Argentina")
         return arrayOf(ciudad1,ciudad2,ciudad3)
     }
-
     override suspend fun traerClima(ciudad: Ciudad): Clima2 {
         TODO("Not yet implemented")
     }

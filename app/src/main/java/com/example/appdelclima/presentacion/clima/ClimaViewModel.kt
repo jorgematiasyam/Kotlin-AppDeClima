@@ -11,8 +11,9 @@ import com.example.appdelclima.presentacion.clima.ClimaIntencion
 import com.example.appdelclima.router.Router
 import com.istea.appdelclima.presentacion.clima.ClimaEstado
 import com.istea.appdelclima.repository.Repositorio
-
+import com.istea.appdelclima.repository.RepositorioMock
 import com.istea.appdelclima.repository.modelos.Ciudad
+import com.istea.appdelclima.repository.modelos.Clima
 import kotlinx.coroutines.launch
 class ClimaViewModel(
     val respositorio: Repositorio,
@@ -38,7 +39,7 @@ class ClimaViewModel(
     private fun mostrarCordoba(){
         ClimaEstado.Cargando
         viewModelScope.launch {
-            val cordoba = Ciudad(name = "Cordoba", /*lat = -31.4135, lon = -64.18105,*/ country = "Ar")
+            val cordoba = Ciudad(name = "Cordoba", lat = -31.4135, lon = -64.18105, country = "Ar")
             try{
                 val clima = respositorio.traerClima(cordoba)
                 ClimaEstado.Exitoso(
