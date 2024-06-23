@@ -1,25 +1,22 @@
+package com.istea.appdelclima.presentacion.clima.actual
+
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.appdelclima.presentacion.clima.ClimaIntencion
+import com.example.appdelclima.presentacion.clima.actual.ClimaIntencion
 import com.example.appdelclima.router.Router
-import com.istea.appdelclima.presentacion.clima.ClimaEstado
+import com.example.appdelclima.presentacion.clima.actual.ClimaEstado
 import com.istea.appdelclima.repository.Repositorio
-import com.istea.appdelclima.repository.RepositorioMock
-import com.istea.appdelclima.repository.modelos.Ciudad
-import com.istea.appdelclima.repository.modelos.Clima
 import kotlinx.coroutines.launch
 class ClimaViewModel(
     val respositorio: Repositorio,
     val router: Router,
     val lat : Float,
-    val lon : Float
+    val lon : Float,
+    val nombre: String
 ) : ViewModel() {
     var uiState by mutableStateOf<ClimaEstado>(ClimaEstado.Vacio)
     fun ejecutar(intencion: ClimaIntencion){
@@ -51,11 +48,12 @@ class ClimaViewModelFactory(
     private val router: Router,
     private val lat: Float,
     private val lon: Float,
+    private val nombre: String,
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ClimaViewModel::class.java)) {
-            return ClimaViewModel(repositorio,router,lat,lon) as T
+            return ClimaViewModel(repositorio,router,lat,lon,nombre) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

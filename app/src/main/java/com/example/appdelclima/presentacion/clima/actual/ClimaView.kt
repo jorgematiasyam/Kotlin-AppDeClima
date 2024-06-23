@@ -1,9 +1,10 @@
+package com.istea.appdelclima.presentacion.clima.actual
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,9 +14,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
-import com.example.appdelclima.presentacion.clima.ClimaIntencion
+import com.example.appdelclima.presentacion.clima.actual.ClimaIntencion
 import com.example.appdelclima.ui.theme.AppDelClimaTheme
-import com.istea.appdelclima.presentacion.clima.ClimaEstado
+import com.example.appdelclima.presentacion.clima.actual.ClimaEstado
+
 
 
 @Composable

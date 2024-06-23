@@ -1,4 +1,6 @@
-package com.istea.appdelclima.presentacion.clima
+package com.example.appdelclima.presentacion.clima.actual
+
+actual
 sealed class ClimaEstado {
     data class Exitoso (
         val ciudad: String = "",
