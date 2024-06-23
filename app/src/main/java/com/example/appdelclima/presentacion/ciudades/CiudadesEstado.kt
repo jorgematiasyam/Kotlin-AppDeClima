@@ -1,5 +1,4 @@
 package com.example.appdelclima.presentacion.ciudades
-
 import com.istea.appdelclima.repository.modelos.Ciudad
 
 sealed class CiudadesEstado {

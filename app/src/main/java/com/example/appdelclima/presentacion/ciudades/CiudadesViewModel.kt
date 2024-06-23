@@ -14,16 +14,13 @@ class CiudadesViewModel(
 ) : ViewModel(){
 
     var uiState by mutableStateOf<CiudadesEstado>(CiudadesEstado.Vacio)
-
     fun ejecutar(intencion: CiudadesIntencion){
         when(intencion){
             is CiudadesIntencion.Buscar -> buscar(nombre = intencion.nombre)
             is CiudadesIntencion.Seleccionar -> seleccionar(indice = intencion.indice)
         }
     }
-
     private fun buscar( nombre: String){
-
         uiState = CiudadesEstado.Cargando
         viewModelScope.launch {
             try {
@@ -34,13 +31,10 @@ class CiudadesViewModel(
             }
         }
     }
-
     private fun seleccionar(indice: Int){
         uiState = CiudadesEstado.Vacio
     }
 }
-
-
 class CiudadesViewModelFactory(
     private val repositorio: Repositorio
 ) : ViewModelProvider.Factory {
