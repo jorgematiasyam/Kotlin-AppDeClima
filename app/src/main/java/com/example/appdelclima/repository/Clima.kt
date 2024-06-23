@@ -1,4 +1,4 @@
-package com.example.appdelclima
+package com.example.appdelclima.repository
 
 data class Clima(
     val temperatura: Int,
