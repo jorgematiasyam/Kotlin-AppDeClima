@@ -30,7 +30,7 @@ class RepositorioApi : Repositorio {
                     val ciudades = respuesta.body<List<Ciudad>>()
                     return ciudades
                 } else {
-                    println("JOJO: Status no ok")
+                    println("Status no ok")
                     throw Exception()
                 }
             }

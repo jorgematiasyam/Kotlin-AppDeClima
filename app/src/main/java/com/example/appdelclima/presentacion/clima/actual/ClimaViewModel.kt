@@ -24,12 +24,9 @@ class ClimaViewModel(
             ClimaIntencion.actualizarClima -> traerClima()
         }
     }
-
     fun traerClima() {
         uiState = ClimaEstado.Cargando
-
         viewModelScope.launch {
-
             try{
                 val clima = respositorio.traerClima(lat = lat, lon = lon)
                 uiState = ClimaEstado.Exitoso(
@@ -38,7 +35,7 @@ class ClimaViewModel(
                     st = 10.2//clima.main.feelsLike,
                 )
             } catch (exception: Exception){
-                uiState = ClimaEstado.Error(exception.localizedMessage ?: "error desconocido")
+                uiState = ClimaEstado.Error(exception.localizedMessage ?: "Error desconocido")
             }
         }
     }

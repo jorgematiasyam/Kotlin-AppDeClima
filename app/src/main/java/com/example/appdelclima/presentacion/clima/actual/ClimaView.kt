@@ -52,12 +52,12 @@ fun ClimaView(
 
 @Composable
 fun EmptyView(){
-    Text(text = "No hay nada que mostrar")
+    Text(text = "No hay datos")
 }
 
 @Composable
 fun LoadingView(){
-    Text(text = "Cargando")
+    Text(text = "Cargando....")
 }
 
 @Composable
@@ -71,7 +71,7 @@ fun ClimaView(ciudad: String, temperatura: Double, descripcion: String, st:Doubl
         Text(text = ciudad, style = MaterialTheme.typography.titleMedium)
         Text(text = "${temperatura}°", style = MaterialTheme.typography.titleLarge)
         Text(text = descripcion, style = MaterialTheme.typography.bodyMedium)
-        Text(text = "sensacionTermica: ${st}°", style = MaterialTheme.typography.bodyMedium)
+        Text(text = "Sensacion Termica: ${st}°", style = MaterialTheme.typography.bodyMedium)
     }
 }
 
@@ -87,7 +87,7 @@ fun ClimaPreviewVacio() {
 @Composable
 fun ClimaPreviewError() {
     AppDelClimaTheme {
-        ClimaView(state = ClimaEstado.Error("Se rompio todo"), onAction = {})
+        ClimaView(state = ClimaEstado.Error("Error desconocido"), onAction = {})
     }
 }
 

@@ -1,6 +1,6 @@
 package com.example.appdelclima.presentacion.clima.actual
 
-actual
+
 sealed class ClimaEstado {
     data class Exitoso (
         val ciudad: String = "",
@@ -9,7 +9,7 @@ sealed class ClimaEstado {
         val st :Double = 0.0,
     ) : ClimaEstado()
     data class Error(
-        val mensaje :String = "",
+        val mensaje :String = "----",
     ) : ClimaEstado()
     data object Vacio: ClimaEstado()
     data object Cargando: ClimaEstado()

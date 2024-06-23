@@ -21,7 +21,6 @@ import com.example.appdelclima.presentacion.clima.pronostico.PronosticoEstado
 import com.example.appdelclima.repository.modelos.ListForecast
 
 
-
 @Composable
 fun PronosticoView(
     modifier: Modifier = Modifier,
